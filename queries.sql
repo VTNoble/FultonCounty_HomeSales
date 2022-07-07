@@ -1,5 +1,6 @@
 -- Create table for dataframe to be loaded into
 CREATE TABLE home_sales (
+id SERIAL PRIMARY KEY,
 address TEXT,
 county TEXT,
 state TEXT,
