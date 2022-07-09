@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
+import json
 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 
 #################################################
@@ -20,7 +21,7 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the table
-Sales = Base.classes.home_sales
+# Sales = Base.classes.home_sales
 
 #################################################
 # Flask Setup
@@ -41,6 +42,12 @@ def welcome():
         f"/api/v1.0/monthly_sales<br/>"
         f"/api/v1.0/chloropleth"
     )
+
+
+@app.route("/map")
+def mapper():
+
+    return render_template("index.html")
 
 
 @app.route("/api/v1.0/median")
@@ -81,19 +88,26 @@ def monthly_sales():
 @app.route("/api/v1.0/chloropleth")
 def chloropleth():
 
-    # read sql table
-    df3 = pd.read_sql_table('home_sales', engine)
+    file = open('static/data/Fulton_bg2.geojson')
+    myvar = json.load(file)
+    file.close()
 
-    # group by block/year and get median price for each block
-    df3 = df3.groupby(['block', 'sale_year'], as_index=False).median()
 
-    # update to only include relevant columns
-    df3 = df3[['sale_year', 'block', 'sale_price']]
+    
 
-    # convert to dictionary
-    df3 = df3.to_dict(orient='records')
+    # # read sql table
+    # df3 = pd.read_sql_table('home_sales', engine)
 
-    return jsonify(df3)
+    # # group by block/year and get median price for each block
+    # df3 = df3.groupby(['block', 'sale_year'], as_index=False).median()
+
+    # # update to only include relevant columns
+    # df3 = df3[['sale_year', 'block', 'sale_price']]
+
+    # # convert to dictionary
+    # df3 = df3.to_dict(orient='records')
+
+    return jsonify(myvar)
 
 
 if __name__ == '__main__':
