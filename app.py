@@ -45,7 +45,9 @@ def welcome():
         f"/api/v1.0/chloropleth<br/>"
         f"----------------------------------<br/>"
         f"Web Routes:<br/>"
-        f"/plots"
+        f"/plots<br/>"
+        f"/about<br/>"
+        f"/data"
         
     )
 
