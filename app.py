@@ -79,6 +79,8 @@ def median():
     # group by month/year and get median price for each month
     df1 = df1.groupby(['sale_year', 'sale_month'], as_index=False).median()
 
+    #df1 = df1.groupby(['sale_year'], as_index=False)
+
     # update to only include relevant columns
     df1 = df1[['sale_year', 'sale_month', 'sale_price']]
 
