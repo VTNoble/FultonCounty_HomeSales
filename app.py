@@ -38,16 +38,34 @@ def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br/>"
+        f"----------------------------------<br/>"
+        f"API Routes:<br/>"
         f"/api/v1.0/median<br/>"
         f"/api/v1.0/monthly_sales<br/>"
-        f"/api/v1.0/chloropleth"
+        f"/api/v1.0/chloropleth<br/>"
+        f"----------------------------------<br/>"
+        f"Web Routes:<br/>"
+        f"/plots"
+        
     )
 
 
-@app.route("/map")
+@app.route("/plots")
 def mapper():
 
     return render_template("index.html")
+
+
+@app.route("/about")
+def about():
+
+    return render_template("about.html")
+
+
+@app.route("/data")
+def data():
+
+    return render_template("data.html")
 
 
 @app.route("/api/v1.0/median")
