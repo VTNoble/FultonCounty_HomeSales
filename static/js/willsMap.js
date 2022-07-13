@@ -5,17 +5,16 @@ var map = L.map('map').setView([33.799837439886055, -84.41356284230015], 9);
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    
-function createMap(){
-    
 
+function createMap(){
+  
     // function to create color breaks
     function getColor(d) {
-        return d > 800000 ? '#006d2c' :
-            d > 500000  ? '#31a354' :
-            d > 350000   ? '#74c476' :
-            d > 250000   ? '#bae4b3' :
-            d > 100000   ? '#edf8e9' :
+        return d > 750000 ? '#006d2c' :
+            d > 500000  ? '#31a354' : 
+            d > 300000   ? '#74c476' : 
+            d > 200000   ? '#a1d99b' : 
+            d > 100000   ? '#c7e9c0' : 
                         '#FFFFFF';
     }
 
@@ -25,25 +24,72 @@ function createMap(){
         let salesData = feature.properties.sales.filter(d => {
             return d.sale_year == year
         })[0]
-        return {
-            fillColor: getColor(salesData.sale_price),
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '3',
-            fillOpacity: 0.8
-        };
+
+            return {
+                fillColor: getColor(salesData.sale_price),
+                weight: 0.75,
+                opacity: 1,
+                color: 'black',
+                dashArray: '',
+                fillOpacity: 0.6
+            };
     }
 
-    url = "/api/v1.0/chloropleth"
+    // BEGIN THE INTERACTIVE PORTION OF THE MAP!
+    function highlightFeature(e) {
+		var layer = e.target;
 
+		layer.setStyle({
+			weight: 2,
+			color: '#000000',
+			dashArray: '',
+			fillOpacity: 0.9
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+	}
+
+	var mapLayer;
+
+	function resetHighlight(e) {
+		mapLayer.resetStyle(e.target);
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+    
+    // get the data to display on the map
+    url = "/api/v1.0/chloropleth"
     d3.json(url).then(function(data) {
 
         console.log(data);
         
 
-        L.geoJson(data, {style: style}).addTo(map);
+        mapLayer = L.geoJson(data, {
+            style: style, 
+            onEachFeature: onEachFeature
+        }).bindTooltip("tester",
+                {sticky: true,
+                interactive: true,
+                opacity: 1}  
+            ).addTo(map);
     })
+
+    // add map attribution
+    map.attributionControl.addAttribution('Source: <a href="https://qpublic.schneidercorp.com/Application.aspx?App=FultonCountyGA&Layer=Parcels&PageType=Search">Fulton County Public Records</a>');
 
 }
 
