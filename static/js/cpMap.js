@@ -83,7 +83,7 @@ function createMap(){
         mapLayer = L.geoJson(data, {
             style: style, 
             onEachFeature: onEachFeature
-        }).bindTooltip("tester",
+        }).bindTooltip("test popup",
                 {sticky: true,
                 interactive: true,
                 opacity: 1}  
