@@ -34,7 +34,21 @@ function createBar(){
     let config = {
       type: 'bar',
       data: data,
-      options: {}
+      options: {
+        layout: {
+          padding: 10
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: 'Total Home Sales'
+            },
+            suggestedMin: 0,
+            suggestedMax: 2500
+          }
+        }
+      }
     };
 
     let barChartStatus = Chart.getChart("barChart"); // <canvas> id

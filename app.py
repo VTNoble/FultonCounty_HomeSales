@@ -7,7 +7,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_file
 
 
 #################################################
@@ -68,6 +68,13 @@ def about():
 def data():
 
     return render_template("data.html")
+
+
+@app.route("/download")
+def downloadCSV():
+
+    path = "data/data_clean.csv"
+    return send_file(path, as_attachment=True)
 
 
 @app.route("/api/v1.0/median")

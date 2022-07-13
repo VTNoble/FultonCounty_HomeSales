@@ -25,7 +25,7 @@ function createLine(){
     let data = {
       labels: month,
       datasets: [{
-        label: 'Median Home Value ($)',
+        label: 'Median Sale Price ($)',
         backgroundColor: "#008000",
         borderColor: "#008000",
         data: medianPrice,
@@ -35,7 +35,21 @@ function createLine(){
     let config = {
       type: 'line',
       data: data,
-      options: {}
+      options: {
+        layout: {
+          padding: 10
+        },
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: 'Median Sale Price ($)'
+            },
+            suggestedMin: 250000,
+            suggestedMax: 450000
+          }
+        }
+      }
     };
 
     let lineChartStatus = Chart.getChart("lineChart"); // <canvas> id
