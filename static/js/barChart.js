@@ -37,9 +37,9 @@ function createBar(){
       options: {}
     };
 
-    let chartStatus = Chart.getChart("barChart"); // <canvas> id
-    if (chartStatus != undefined) {
-      chartStatus.destroy();
+    let barChartStatus = Chart.getChart("barChart"); // <canvas> id
+    if (barChartStatus != undefined) {
+      barChartStatus.destroy();
       };
 
     let barChart = new Chart(
@@ -51,9 +51,3 @@ function createBar(){
 
 // initalize the page
 createBar()
-
-// event listener for dropdown
-d3.select('#selDataset').on('change', () => {
-  console.log('event listener was clicked')
-  createBar()
-})

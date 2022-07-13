@@ -7,7 +7,7 @@ async function fetchlineJSON() {
   return datapoints;
 };
 
-function createLine() {
+function createLine(){
 
   fetchlineJSON().then(datapoints => {
     let year = parseInt(d3.select('#selDataset').property("value"));
@@ -38,9 +38,9 @@ function createLine() {
       options: {}
     };
 
-    let chartStatus = Chart.getChart("lineChart"); // <canvas> id
-    if (chartStatus != undefined) {
-      chartStatus.destroy();
+    let lineChartStatus = Chart.getChart("lineChart"); // <canvas> id
+    if (lineChartStatus != undefined) {
+      lineChartStatus.destroy();
       };
 
     let lineChart = new Chart(
@@ -52,9 +52,3 @@ function createLine() {
 
 // initalize the page
 createLine()
-
-// event listener for dropdown
-d3.select('#selDataset').on('change', () => {
-  console.log('event listener was clicked')
-  createLine()
-})

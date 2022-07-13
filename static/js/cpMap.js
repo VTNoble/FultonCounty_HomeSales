@@ -102,4 +102,6 @@ createMap()
 d3.select('#selDataset').on('change', () => {
     console.log('event listener was clicked')
     createMap()
+    createBar()
+    createLine()
 })
