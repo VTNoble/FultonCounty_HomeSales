@@ -79,14 +79,35 @@ def median():
     # group by month/year and get median price for each month
     df1 = df1.groupby(['sale_year', 'sale_month'], as_index=False).median()
 
-    #df1 = df1.groupby(['sale_year'], as_index=False)
 
     # update to only include relevant columns
     df1 = df1[['sale_year', 'sale_month', 'sale_price']]
 
+    # values for new column to help sort by month
+    values = {
+        'Jan': 1,
+        'Feb': 2,
+        'Mar': 3,
+        'Apr': 4,
+        'May': 5,
+        'Jun': 6,
+        'Jul': 7,
+        'Aug': 8,
+        'Sep': 9,
+        'Oct': 10,
+        'Nov': 11,
+        'Dec': 12
+    }
+
+    # add new column with numeric values for month
+    df1['month_id'] = df1['sale_month'].map(values)
+
     df1 = df1.to_dict(orient='records')
 
-    return jsonify(df1)
+    # create new dataframe sorted by month
+    df1_sorted = sorted(df1, key= lambda x: (x['sale_year'], x['month_id']))
+
+    return jsonify(df1_sorted)
 
 
 @app.route("/api/v1.0/monthly_sales")
@@ -101,10 +122,32 @@ def monthly_sales():
     # update to only include relevant columns
     df2 = df2[['sale_year', 'sale_month', 'sale_price']]
 
+    # values for new column to help sort by month
+    values = {
+        'Jan': 1,
+        'Feb': 2,
+        'Mar': 3,
+        'Apr': 4,
+        'May': 5,
+        'Jun': 6,
+        'Jul': 7,
+        'Aug': 8,
+        'Sep': 9,
+        'Oct': 10,
+        'Nov': 11,
+        'Dec': 12
+    }
+
+    # add new column with numeric values for month
+    df2['month_id'] = df2['sale_month'].map(values)
+
     # convert to dictionary
     df2 = df2.to_dict(orient='records')
 
-    return jsonify(df2)
+    # create new dataframe sorted by month
+    df2_sorted = sorted(df2, key= lambda x: (x['sale_year'], x['month_id']))
+
+    return jsonify(df2_sorted)
 
 
 @app.route("/api/v1.0/chloropleth")
