@@ -77,6 +77,13 @@ def downloadCSV():
     return send_file(path, as_attachment=True)
 
 
+@app.route("/flowchart")
+def flowchart():
+
+    path = "images/Flowchart.png"
+    return send_file(path, as_attachment=True)
+
+
 @app.route("/api/v1.0/median")
 def median():
 

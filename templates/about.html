@@ -22,7 +22,6 @@
     }
    </style>
 
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,16 +51,17 @@
                 </div>
           </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-2 mb-5">
           <div class="col-md-12">
-            <p>In this project, home sale data was pulled from Fulton County public records dating from 2017 through 2021. The data was collected from the Fulton County Board of Assessors page and combined into a csv file. This csv file was then loaded into a DataFrame, cleaned, and prepared to load into a database on pgAdmin. More years of data could be added to the database to be included in the future.</p>
-            <p>After the data was loaded into pgAdmin, a Flask app was created to generate separate data routes to include specific data for each visualization. Different routes were also created for different pages of the website.</p>
+            <p>In this project, home sale data was pulled from the Fulton County Board of Assessors dating from 2017 through 2021.</p>
             <p>The data was then used to generate plots for each respective year that display the following:</p>
             <ul>
-              <li>A chloropleth map created with Leaflet that shows all block groups in Fulton County shaded by what the median home price was based on confirmed sales in the selected year.</li>
-              <li>A line chart created with Charts.js that shows the median home price by month for sales in Fulton County in the selected year.</li>
-              <li>A bar chart created with Charts.js that shows the total home sales in Fulton County by month in the selected year.</li>
+              <li>A chloropleth map created with Leaflet that shows all block groups in Fulton County shaded by median home price.</li>
+              <li>A line chart created with Chart.js that shows the median home price by month.</li>
+              <li>A bar chart created with Chart.js that shows the total home sales by month.</li>
             </ul>
+            <p>The flowchart below shows the process followed during this project, from data collection to deploying the application of interactive plots.</p>
+            <img class="rounded mx-auto d-block" src="/flowchart" alt="Project Flowchart">
           </div>
         </div>
       </div>
