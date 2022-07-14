@@ -1,24 +1,50 @@
-// declare map object
-var map = L.map('map').setView([33.799837439886055, -84.41356284230015], 9);
+ // function to create color breaks
+ function getColor(d) {
+    return d > 750000 ? '#006d2c' :
+        d > 500000  ? '#31a354' : 
+        d > 300000   ? '#74c476' : 
+        d > 200000   ? '#a1d99b' : 
+        d > 100000   ? '#c7e9c0' : 
+                    '#FFFFFF';
+}
 
-// declare open street map tiles
-var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
 
+ // declare map object
+ var map = L.map('map').setView([33.799837439886055, -84.41356284230015], 9);
 
-function createMap(){
-  
-    // function to create color breaks
-    function getColor(d) {
-        return d > 750000 ? '#006d2c' :
-            d > 500000  ? '#31a354' : 
-            d > 300000   ? '#74c476' : 
-            d > 200000   ? '#a1d99b' : 
-            d > 100000   ? '#c7e9c0' : 
-                        '#FFFFFF';
+ // declare open street map tiles
+ var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     maxZoom: 19,
+     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+// add legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+    var grades = [0, 100000, 200000, 300000, 500000, 750000];
+    var labels = [];
+    var from, to;
+
+    for (var i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(
+            '<i style="background:' + getColor(from + 1) + '"></i> <strong>$' +
+            from.toLocaleString("en-US") + (to ? '&ndash;$' + to.toLocaleString("en-US") : '+')+'</strong>');
     }
+
+    div.innerHTML = labels.join('<br>');
+    return div;
+};
+
+legend.addTo(map);
+
+    
+function createMap(){
 
     // function to style the individual blocks
     function style(feature) {
@@ -65,12 +91,29 @@ function createMap(){
 	}
 
 	function onEachFeature(feature, layer) {
+        let year = parseInt(d3.select('#selDataset').property("value"))
+        let salesData = feature.properties.sales.filter(d => {
+            return d.sale_year == year
+        })[0]
+        data = 'Median Home Sales Price: ' + salesData.sale_price.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        })
 		layer.on({
 			mouseover: highlightFeature,
 			mouseout: resetHighlight,
 			click: zoomToFeature
 		});
+        layer.bindTooltip( data,
+                {sticky: true,
+                interactive: true,
+                opacity: 1}  
+            );
+
 	}
+    
 
     
     // get the data to display on the map
@@ -83,20 +126,20 @@ function createMap(){
         mapLayer = L.geoJson(data, {
             style: style, 
             onEachFeature: onEachFeature
-        }).bindTooltip("test popup",
-                {sticky: true,
-                interactive: true,
-                opacity: 1}  
-            ).addTo(map);
+        }).addTo(map)
+        
+        
     })
 
     // add map attribution
     map.attributionControl.addAttribution('Source: <a href="https://qpublic.schneidercorp.com/Application.aspx?App=FultonCountyGA&Layer=Parcels&PageType=Search">Fulton County Public Records</a>');
 
+    
+
 }
 
 // initialize the page
-createMap()
+createMap();
 
 // event listener for dropdown
 d3.select('#selDataset').on('change', () => {
