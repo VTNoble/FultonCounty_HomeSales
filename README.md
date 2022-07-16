@@ -5,18 +5,26 @@
 # Table of content
 
 
-- [API and CSV study](#API and CSV study)
-    - [Year By Year Visualizations Line & Bar Graph 2017-2021](#Year By Year Visualizations Line & Bar Graph 2017-2021)
-    - [Multiple results](#multiple-results)
-    - [House Addresses](#house-addresses)
-    - [Bounding Box](#bounding-box)
-- [Command Line Interface](#command-line-interface)
-- [Providers](#providers)
-- [Feedback](#feedback)
-- [Contribution](#contribution)
-    - [Documenting](#documenting)
-    - [Coding](#coding)
-- [Choropleth Map](#Choropleth Map)
+- API and CSV study
+    - Year By Year Visualizations Line & Bar Graph 2017-2021
+- Command Line Interface
+- Feedback
+- Contribution
+    - Documenting
+    - Coding
+- Choropleth Map
+-
+# IP Addresses
+
+API Routes:<br/>"
+        f"/api/v1.0/median<br/>"
+        f"/api/v1.0/monthly_sales<br/>"
+        f"/api/v1.0/chloropleth<br/>"
+        f"----------------------------------<br/>"
+        f"Web Routes:<br/>"
+        f"/plots<br/>"
+        f"/about<br/>"
+        f"/data"
 
 
 # Overview
