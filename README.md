@@ -13,17 +13,17 @@
     - Documenting
     - Coding
 - Choropleth Map
--
+
 ## IP Addresses
 
 ### API Routes:
-        /api/v1.0/median<br/
-        /api/v1.0/monthly_sales<br/
-        /api/v1.0/chloropleth<br/
+        /api/v1.0/median
+        /api/v1.0/monthly_sales
+        /api/v1.0/chloropleth
        
  ### Web Routes:
-        /plots<br/
-        /about<br/
+        /plots
+        /about
         /data
 
 
