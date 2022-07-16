@@ -2,10 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/102114721/179354040-42f0c7b0-5199-4cc1-b9d0-b6edf63ff1a5.png)
 
-Table of content
-----------------
-
-<!-- TOC -->
+# Table of content
 
 - [Overview](#overview)
 - [A glimpse at the API](#a-glimpse-at-the-api)
@@ -21,9 +18,8 @@ Table of content
     - [Coding](#coding)
 - [ChangeLog](#changelog)
 
-<!-- /TOC -->
 
-#Overview
+# Overview
 This project visualizes geocoded home sales data pulled from the Fulton County Tax Assessor. The data spans the five years from 2017 through 2021.
 
 The data was then used to generate plots for each respective year that display the following:
@@ -33,7 +29,8 @@ The data was then used to generate plots for each respective year that display t
  - A bar chart created with Chart.js that shows the total home sales by month.
  - The flowchart below shows the process followed during this project, from data collection to deploying the application of interactive plots.
  
- #Flowchart
+ # Flowchart
+ 
  ![Flowchart](https://user-images.githubusercontent.com/102114721/179354844-73e3adeb-b2fb-471d-98e8-2cd8d68079aa.png)
 
  
