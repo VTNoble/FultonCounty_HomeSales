@@ -4,9 +4,9 @@
 
 # Table of content
 
-- [Overview](#overview)
-- [A glimpse at the API](#a-glimpse-at-the-api)
-    - [Forward](#forward)
+
+- [API and CSV study](#API and CSV study)
+    - [Year By Year Visualizations Line & Bar Graph 2017-2021](#Year By Year Visualizations Line & Bar Graph 2017-2021)
     - [Multiple results](#multiple-results)
     - [House Addresses](#house-addresses)
     - [Bounding Box](#bounding-box)
@@ -16,7 +16,7 @@
 - [Contribution](#contribution)
     - [Documenting](#documenting)
     - [Coding](#coding)
-- [ChangeLog](#changelog)
+- [Choropleth Map](#Choropleth Map)
 
 
 # Overview
