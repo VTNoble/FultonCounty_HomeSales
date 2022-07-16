@@ -1,8 +1,8 @@
-## FultonCounty_HomeSales
+# FultonCounty_HomeSales
 
 ![image](https://user-images.githubusercontent.com/102114721/179354040-42f0c7b0-5199-4cc1-b9d0-b6edf63ff1a5.png)
 
-# Table of content
+## Table of content
 
 
 - API and CSV study
@@ -14,7 +14,7 @@
     - Coding
 - Choropleth Map
 -
-# IP Addresses
+## IP Addresses
 
 API Routes:<br/>"
         f"/api/v1.0/median<br/>"
@@ -27,7 +27,7 @@ API Routes:<br/>"
         f"/data"
 
 
-# Overview
+## Overview
 This project visualizes geocoded home sales data pulled from the Fulton County Tax Assessor. The data spans the five years from 2017 through 2021.
 
 The data was then used to generate plots for each respective year that display the following:
@@ -37,7 +37,7 @@ The data was then used to generate plots for each respective year that display t
  - A bar chart created with Chart.js that shows the total home sales by month.
  - The flowchart below shows the process followed during this project, from data collection to deploying the application of interactive plots.
  
- # Flowchart
+ ## Flowchart
  
  ![Flowchart](https://user-images.githubusercontent.com/102114721/179354844-73e3adeb-b2fb-471d-98e8-2cd8d68079aa.png)
 
