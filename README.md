@@ -1,4 +1,7 @@
-# FultonCounty_HomeSales
+## FultonCounty_HomeSales
+
+![image](https://user-images.githubusercontent.com/102114721/179354040-42f0c7b0-5199-4cc1-b9d0-b6edf63ff1a5.png)
+
 This project visualizes geocoded home sales data pulled from the Fulton County Tax Assessor. The data spans the five years from 2017 through 2021.
 
 The data was then used to generate plots for each respective year that display the following:
