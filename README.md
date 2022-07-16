@@ -16,15 +16,15 @@
 -
 ## IP Addresses
 
-API Routes:<br/>"
-        f"/api/v1.0/median<br/>"
-        f"/api/v1.0/monthly_sales<br/>"
-        f"/api/v1.0/chloropleth<br/>"
-        f"----------------------------------<br/>"
-        f"Web Routes:<br/>"
-        f"/plots<br/>"
-        f"/about<br/>"
-        f"/data"
+### API Routes:
+        /api/v1.0/median<br/
+        /api/v1.0/monthly_sales<br/
+        /api/v1.0/chloropleth<br/
+       
+ ### Web Routes:
+        /plots<br/
+        /about<br/
+        /data
 
 
 ## Overview
