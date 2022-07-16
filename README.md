@@ -33,7 +33,9 @@ The data was then used to generate plots for each respective year that display t
  - A bar chart created with Chart.js that shows the total home sales by month.
  - The flowchart below shows the process followed during this project, from data collection to deploying the application of interactive plots.
  
- #Process map
+ #Flowchart
+ ![Flowchart](https://user-images.githubusercontent.com/102114721/179354844-73e3adeb-b2fb-471d-98e8-2cd8d68079aa.png)
+
  
 
 
