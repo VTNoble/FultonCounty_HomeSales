@@ -13,7 +13,7 @@ from flask import Flask, jsonify, render_template, send_file
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("postgresql://postgres:admin@localhost/fultoncounty_db")
+engine = create_engine('sqlite:///home_sales.sqlite')
 
 # reflect an existing database into a new model
 Base = automap_base()

@@ -8,15 +8,22 @@
                     '#FFFFFF';
 }
 
+ 
+// declare map object
+var map = L.map('map',{
+    layers:osm
+}).setView([33.799837439886055, -84.41356284230015], 9);
 
- // declare map object
- var map = L.map('map').setView([33.799837439886055, -84.41356284230015], 9);
 
+var mapLayer;
  // declare open street map tiles
- var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
      maxZoom: 19,
+     name: 'Base Map',
      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+
 
 // add legend
 var legend = L.control({position: 'bottomright'});
@@ -43,7 +50,8 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-    
+
+// This will create an initial instance of the map and will get called again upon selecting another year
 function createMap(){
 
     // function to style the individual blocks
@@ -80,9 +88,9 @@ function createMap(){
 
 	}
 
-	var mapLayer;
+        
 
-	function resetHighlight(e) {
+		function resetHighlight(e) {
 		mapLayer.resetStyle(e.target);
 	}
 
@@ -129,12 +137,16 @@ function createMap(){
         }).addTo(map)
         
         
+        
     })
 
     // add map attribution
     map.attributionControl.addAttribution('Source: <a href="https://qpublic.schneidercorp.com/Application.aspx?App=FultonCountyGA&Layer=Parcels&PageType=Search">Fulton County Public Records</a>');
 
+   
     
+
+
 
 }
 
