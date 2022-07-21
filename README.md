@@ -17,7 +17,7 @@
 ## IP Addresses
 
 ### Heroku App:
-![Heroku App](https://fultoncountyhomesales.herokuapp.com/plots)
+[Heroku App](https://fultoncountyhomesales.herokuapp.com/plots)
 
 ### API Routes:
         /api/v1.0/median
