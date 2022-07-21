@@ -1,6 +1,6 @@
 // Fetch data from JSON
 async function fetchlineJSON() {
-  let url = 'http://127.0.0.1:5000/api/v1.0/median';
+  let url = '/api/v1.0/median';
   let response = await fetch(url);
   // loads waiting to complete the request...
   let datapoints = await response.json();
