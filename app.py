@@ -133,7 +133,7 @@ def monthly_sales():
     # read sql table
     #df2 = pd.read_sql_table('home_sales', engine)
     con = sqlite3.connect("home_sales.sqlite")
-    df1 = pd.read_sql_query("SELECT * from home_sales", con)
+    df2 = pd.read_sql_query("SELECT * from home_sales", con)
 
     # group by month/year and get total sales for each month
     df2 = df2.groupby(['sale_year', 'sale_month'], as_index=False).count()
